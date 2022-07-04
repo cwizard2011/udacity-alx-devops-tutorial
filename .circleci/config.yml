@@ -41,7 +41,7 @@ workflows:
   welcome:
     jobs:
       - welcome/run
-  print_hello_world:
+  print-hello-world:
     jobs:
       - print_hello
       - print_world:

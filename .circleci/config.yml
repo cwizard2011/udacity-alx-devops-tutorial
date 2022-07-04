@@ -57,16 +57,19 @@ jobs:
     steps:
       - checkout
       - run: mkdir -p workspace
-      - run: echo "The owner $OWNER_NAME is saying Hello World" > workspace/output.txt
+      - run: echo "The owner $OWNER_NAME is saying Hello World" > workspace/alx_udacity_project/output.txt
       
       - persist_to_workspace:
           root: workspace
+          paths:
+            - alx_udacity_project
+
 
   print_output_file:
     executor: my-executor
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: /tmp/workspace/alx_udacity_project
       - run: cat output.txt
 
 workflows:

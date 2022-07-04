@@ -59,7 +59,8 @@ jobs:
       - run: echo "The owner $OWNER_NAME is saying Hello World" > workspace/output.txt
       - persist_to_workspace:
           root: ~/
-          paths: workspace/output.txt
+          paths: 
+            - workspace
 
 
   print_output_file:

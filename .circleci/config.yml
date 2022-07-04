@@ -43,8 +43,10 @@ jobs:
     environment:
       OWNER_NAME: << OWNER_NAME >>
     steps:
-      - run: "echo Initialising this project by printing owner name << OWNER_NAME >>"
-      - run: echo $OWNER_NAME
+      - run:
+          command: "echo Initialising this project by printing owner name << OWNER_NAME >>"
+      - run:
+          command: echo $OWNER_NAME
 
 workflows:
   welcome:

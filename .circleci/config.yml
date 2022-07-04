@@ -55,9 +55,10 @@ jobs:
     executor: my-executor
     steps:
       - checkout
-      - run: echo "The owner $OWNER_NAME is saying Hello World" > ~/output.txt
+      - run: mkdir ~/workspace
+      - run: echo "The owner $OWNER_NAME is saying Hello World" > ~/workspace/output.txt
       - persist_to_workspace:
-          root: ~/
+          root: ~/workspace
           paths:
             - output.txt
 
@@ -66,8 +67,8 @@ jobs:
     executor: my-executor
     steps:
       - attach_workspace:
-          at: ~/
-      - run: cat ~/output.txt
+          at: ~/workspace
+      - run: cat ~/workspace/output.txt
 
 workflows:
   welcome:

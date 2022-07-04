@@ -57,15 +57,17 @@ jobs:
       - checkout
       - run: mkdir -p workspace
       - run: echo "The owner $OWNER_NAME is saying Hello World" > workspace/output.txt
-      - persist_to_workspace
+      - persist_to_workspace:
+          root: ~/
+          paths: workspace/output.txt
 
 
   print_output_file:
     executor: my-executor
     steps:
       - attach_workspace:
-          at: /workspace
-      - run: cat output.txt
+          at: ~/workspace
+      - run: cat ~/workspace/output.txt
 
 workflows:
   welcome:

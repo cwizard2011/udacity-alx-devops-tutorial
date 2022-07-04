@@ -5,7 +5,6 @@ executors:
   my-executor:
     docker:
       - image: circleci/node:13.8.0
-    working_directory: /tmp
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 # orbs:
@@ -57,12 +56,11 @@ jobs:
     steps:
       - checkout
       - run: mkdir -p workspace
-      - run: echo "The owner $OWNER_NAME is saying Hello World" > workspace/alx_udacity_project/output.txt
+      - run: echo "The owner $OWNER_NAME is saying Hello World" > workspace/output.txt
       
       - persist_to_workspace:
-          root: workspace
           paths:
-            - alx_udacity_project
+            - workspace
 
 
   print_output_file:

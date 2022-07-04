@@ -47,9 +47,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Printing intro"
-          command: "echo Initialising this project by printing owner name << OWNER_NAME >>"
-      - run:
           name: "Printing Name Variable"
           command: |
             echo $OWNER_NAME

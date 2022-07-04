@@ -55,7 +55,7 @@ jobs:
     executor: my-executor
     steps:
       - checkout
-      - run: echo "The owner $OWNER_NAME is saying Hello World" > output.txt
+      - run: echo "The owner $OWNER_NAME is saying Hello World" > ~/output.txt
       - persist_to_workspace:
           root: ~/
           paths:

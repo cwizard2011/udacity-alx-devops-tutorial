@@ -38,10 +38,21 @@ jobs:
       - run:
           name: "Print World"
           command: "echo World"
+  
+  print_owner_name:
+    environment:
+      OWNER_NAME: << OWNER_NAME >>
+    steps:
+      - run: "echo Initialising this project by printing owner name << OWNER_NAME >>"
+      - run: echo $OWNER_NAME
+
 workflows:
   welcome:
     jobs:
-      - print_hello
+      - print_owner_name
+      - print_hello:
+          requires:
+            - print_owner_name
       - print_world:
           requires: 
             - print_hello

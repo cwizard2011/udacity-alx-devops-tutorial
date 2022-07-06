@@ -18,23 +18,23 @@ jobs:
               --template-file template.yml \
               --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} \
               --region us-east-1
-  # Exercise: Config and Deployment
-  configure_infrastructure: 
-    docker:
-      - image: python:3.7-alpine3.11
-    steps:
-      - checkout
-      - add_ssh_keys:
-          fingerprints: ["65:71:c2:82:e9:6d:6f:6c:f9:6d:9b:a1:33:35:e1:68"] # You can get this ID in the section where you registered the SSH Key
-      - run:
-          name: Install dependencies
-          command: |
-            # install the dependencies needed for your playbook
-            apk add --update ansible 
-      - run:
-          name: Configure server
-          command: |
-            ansible-playbook -i ansible-tutorial/inventory ansible-tutorial/main-remote.yml
+  # # Exercise: Config and Deployment
+  # configure_infrastructure: 
+  #   docker:
+  #     - image: python:3.7-alpine3.11
+  #   steps:
+  #     - checkout
+  #     - add_ssh_keys:
+  #         fingerprints: ["65:71:c2:82:e9:6d:6f:6c:f9:6d:9b:a1:33:35:e1:68"] # You can get this ID in the section where you registered the SSH Key
+  #     - run:
+  #         name: Install dependencies
+  #         command: |
+  #           # install the dependencies needed for your playbook
+  #           apk add --update ansible 
+  #     - run:
+  #         name: Configure server
+  #         command: |
+  #           ansible-playbook -i inventory.txt main-remote.yml
 # Sequential workflow
 workflows:
   # Name the workflow
@@ -44,6 +44,6 @@ workflows:
           filters:
             branches:
               only: main
-      - configure_infrastructure:
-          requires:
-            - create_infrastructure
+      # - configure_infrastructure:
+      #     requires:
+      #       - create_infrastructure
